@@ -6,11 +6,20 @@
 - ninja
 - pkg-config
 
+## Examples
+
 ```
 docker run --rm \
     -v "${SRCDIR}":/work \
-    juno/crossbuild:linux-armv7 \
+    desertbit/crossbuild:linux-armv7 \
     make all
+```
+
+```
+docker run --rm \
+    -v "${SRCDIR}":/work \
+    desertbit/crossbuild:linux-armv7 \
+    sh -c '$CC test.c -o test'
 ```
 
 ## Alpine Images
