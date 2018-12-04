@@ -1,9 +1,6 @@
 FROM desertbit/crossbuild:base
 MAINTAINER team@desertbit.com
 
-RUN sudo -H -u builder sh -c "ct-ng x86_64-ubuntu16.04-linux-gnu && ct-ng build.$(grep -c processor /proc/cpuinfo)" && \
-    rm -rf /home/builder/x-tools/x86_64-ubuntu16.04-linux-gnu/build.log*
-
 ENV CROSS_TRIPLE=x86_64-ubuntu16.04-linux-gnu
 ENV CROSS_ROOT=/home/builder/x-tools/${CROSS_TRIPLE}
 ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
@@ -17,3 +14,11 @@ ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
 ENV CGO_ENABLED=1
 ENV GOOS=linux
 ENV GOARCH=amd64
+
+ADD toolchain.cmake /etc/toolchain.cmake
+
+RUN export NUM_CORES="$(grep -c processor /proc/cpuinfo)" && \
+    sudo -H -u builder sh -c "ct-ng ${CROSS_TRIPLE} && ct-ng build.${NUM_CORES}" && \
+    rm -rf "${CROSS_ROOT}"/build.log*
+
+WORKDIR /work
