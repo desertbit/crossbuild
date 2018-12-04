@@ -4,6 +4,7 @@
 - go compiler
 - cmake
 - ninja
+- pkg-config
 
 ## Alpine Images
 

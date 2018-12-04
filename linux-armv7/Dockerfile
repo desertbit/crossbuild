@@ -3,6 +3,7 @@ MAINTAINER team@desertbit.com
 
 ENV CROSS_TRIPLE=armv7-rpi2-linux-gnueabihf
 ENV CROSS_ROOT=/home/builder/x-tools/${CROSS_TRIPLE}
+ENV CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot
 ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
     AR=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ar \
     CC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gcc \
@@ -10,6 +11,8 @@ ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
     CXX=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-g++ \
     LD=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ld \
     FC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gfortran
+
+ENV PKG_CONFIG_PATH="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig"
 
 ENV CGO_ENABLED=1
 ENV GOOS=linux

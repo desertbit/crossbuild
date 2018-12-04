@@ -10,7 +10,7 @@ RUN apt-get -y update && \
         ca-certificates \
         build-essential autoconf autogen gcc gperf bison flex texinfo help2man make \
         libncurses5-dev python-dev libtool-bin bzip2 xz-utils unzip gawk \
-        openssl cmake ninja-build \
+        openssl cmake ninja-build pkg-config \
         sudo git wget curl nano && \
     apt-get -y clean
 
