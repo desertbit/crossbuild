@@ -24,6 +24,10 @@ docker run --rm \
     sh -c '$CC test.c -o test'
 ```
 
+## Custom Libs
+
+Install custom libs, sources and files to `${CROSS_SYSROOT}`.
+
 ## Alpine Images
 
 The docker alpine images are unstable and broken. Crosstool-NG is not fully compatible...
