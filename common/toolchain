@@ -1,7 +1,7 @@
 # Prepare the build environment variables.
 # CROSS_TRIPLE must be set first.
-ENV CROSS_ROOT=${CT_PREFIX}/${CROSS_TRIPLE} \
-    CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot \
+ENV CROSS_ROOT=${CT_PREFIX}/${CROSS_TRIPLE}
+ENV CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot \
     AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
     AR=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ar \
     CC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gcc \
