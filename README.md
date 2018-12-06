@@ -7,6 +7,7 @@
 - cmake
 - ninja
 - pkg-config
+- build as user if the UID & GID environment variables are passed to docker
 
 ## Examples
 
@@ -24,14 +25,22 @@ docker run --rm \
     sh -c '$CC test.c -o test'
 ```
 
+If we are running docker natively, we want to create a user in the container
+with the same UID and GID as the user on the host machine, so that any files
+created are owned by that user. Without this they are all owned by root.
+
+```
+docker run --rm \
+    -e UID="$(id -u)" \
+    -e GID="$(id -g)" \
+    -v "${SRCDIR}":/work \
+    desertbit/crossbuild:linux-armv7 \
+    sh -c '$CC test.c -o test'
+```
+
 ## Custom Libs
 
 Install custom libs, sources and files to `${CROSS_SYSROOT}`.
-
-## Alpine Images
-
-The docker alpine images are unstable and broken. Crosstool-NG is not fully compatible...
-This is a work in progress task.
 
 ## Credits
 

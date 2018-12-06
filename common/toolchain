@@ -1,0 +1,17 @@
+# Prepare the build environment variables.
+# CROSS_TRIPLE must be set first.
+ENV CROSS_ROOT=${CT_PREFIX}/${CROSS_TRIPLE} \
+    CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot \
+    AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
+    AR=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ar \
+    CC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gcc \
+    CPP=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-cpp \
+    CXX=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-g++ \
+    LD=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ld \
+    FC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gfortran
+
+# Setup pkg-config.
+ENV PKG_CONFIG_PATH=${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig
+
+# Preserve the working directory.
+WORKDIR /work
