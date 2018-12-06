@@ -1,12 +1,8 @@
 FROM ubuntu:18.04
 MAINTAINER team@desertbit.com
 
+# Default installation path for the cross-toolchain.
 ENV CT_PREFIX=/x-tools
-
-# PATH setup.
-# Ensure /scripts is always first.
-ENV PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"
-RUN echo 'export PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"' >> /etc/profile
 
 # Set default compiler and linker flags.
 ENV CPPFLAGS="-D_FORTIFY_SOURCE=2" \
@@ -69,6 +65,11 @@ RUN export CROSSTOOL_COMMIT="f8874f447e40852d33d65c1f443a90b0760901df" && \
 RUN groupadd -g 63339 ctng && \
     useradd -d /home/ctng -m -g 63339 -u 63339 -s /bin/bash ctng && \
     chown -R ctng:ctng "${CT_PREFIX}"
+
+# PATH setup.
+# Ensure /scripts is always first.
+ENV PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"
+RUN echo 'export PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"' >> /etc/profile
 
 RUN mkdir /work
 VOLUME /work
