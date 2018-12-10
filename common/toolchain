@@ -11,7 +11,9 @@ ENV CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot \
     FC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gfortran
 
 # Setup pkg-config.
-ENV PKG_CONFIG_PATH=${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig
+ENV PKG_CONFIG_PATH="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig" \
+    PKG_CONFIG_LIBDIR="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig" \
+    PKG_CONFIG_SYSROOT_DIR="${CROSS_SYSROOT}"
 
 # Preserve the working directory.
 WORKDIR /work
