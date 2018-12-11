@@ -68,8 +68,8 @@ RUN groupadd -g 63339 ctng && \
 
 # PATH setup.
 # Ensure /scripts is always first.
-ENV PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"
-RUN echo 'export PATH="/scripts:$CT_PREFIX/bin:$GOROOT/bin:$PATH"' >> /etc/profile
+ENV PATH="/scripts:$CT_PREFIX/bin:$CT_PREFIX/sbin:$GOROOT/bin:$PATH"
+RUN echo 'export PATH="/scripts:$CT_PREFIX/bin:$CT_PREFIX/sbin:$GOROOT/bin:$PATH"' >> /etc/profile
 
 RUN mkdir /work
 VOLUME /work

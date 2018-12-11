@@ -21,5 +21,6 @@ EOF
 rm -rf /tmp/ctng
 rm -rf "${CROSS_ROOT}"/build.log*
 
-# Symlink so that binaries like strip are available.
-ln -sf "${CROSS_ROOT}/${CROSS_TRIPLE}"/bin "${CT_PREFIX}"/bin
+# Symlink so that binaries like gcc cross compiler and strip are available.
+ln -sf "${CROSS_ROOT}"/bin                  "${CT_PREFIX}"/bin
+ln -sf "${CROSS_ROOT}/${CROSS_TRIPLE}"/bin  "${CT_PREFIX}"/sbin
