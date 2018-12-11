@@ -12,8 +12,7 @@ ENV CROSS_SYSROOT=${CROSS_ROOT}/${CROSS_TRIPLE}/sysroot \
 
 # Setup pkg-config.
 ENV PKG_CONFIG_PATH="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig" \
-    PKG_CONFIG_LIBDIR="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig" \
-    PKG_CONFIG_SYSROOT_DIR="${CROSS_SYSROOT}"
+    PKG_CONFIG_LIBDIR="${CROSS_SYSROOT}/lib/pkgconfig:${CROSS_SYSROOT}/usr/lib/pkgconfig"
 
 # Preserve the working directory.
 WORKDIR /work
