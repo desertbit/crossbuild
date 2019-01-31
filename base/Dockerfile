@@ -33,8 +33,8 @@ RUN chmod +x /scripts/cmake && \
     chmod +x /scripts/build-toolchain
 
 # Install the Go compiler.
-RUN export GO_VERSION="1.11.4" && \
-    export GO_CHECKSUM="fb26c30e6a04ad937bbc657a1b5bba92f80096af1e8ee6da6430c045a8db3a5b" && \
+RUN export GO_VERSION="1.11.5" && \
+    export GO_CHECKSUM="ff54aafedff961eb94792487e827515da683d61a5f9482f668008832631e5d25" && \
     mkdir -p /tmp/go && \
     cd /tmp/go && \
     wget -O go.tar.gz https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
@@ -47,7 +47,7 @@ ENV GOROOT=/usr/local/go \
     CGO_ENABLED=1
 
 # Install crosstool-NG.
-RUN export CROSSTOOL_COMMIT="e215e3aea88a667f5270b2d818c4bce6381f8921" && \
+RUN export CROSSTOOL_COMMIT="e550d2c2358ba677380a5b56ce3425a921c272a0" && \
     export NUM_CORES="$(grep -c processor /proc/cpuinfo)" && \
     mkdir -p /tmp/crosstool-ng && \
     cd /tmp/crosstool-ng && \
