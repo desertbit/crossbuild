@@ -1,0 +1,14 @@
+FROM desertbit/crossbuild:base
+MAINTAINER team@desertbit.com
+
+RUN printf "CT_THREADS_POSIX=y\n" >> /usr/share/crosstool-ng/samples/i686-w64-mingw32/crosstool.config
+
+ENV CROSS_TRIPLE=i686-w64-mingw32 \
+    CMAKE_SYSTEM_NAME=Windows \
+    CMAKE_SYSTEM_PROCESSOR=x86 \
+    GOOS=windows \
+    GOARCH=386
+
+#import common.toolchain
+
+RUN build-toolchain
