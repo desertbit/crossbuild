@@ -1,4 +1,4 @@
-CROSSBUILD_IMAGES = linux-armv7 linux-x86_64 linux-x86 windows-x86_64 windows-x86
+CROSSBUILD_IMAGES = linux-armv7 linux-aarch64 linux-x86_64 linux-x86 windows-x86_64 windows-x86
 
 $(CROSSBUILD_IMAGES): %:
 	awk '/import common.toolchain/{system("cat common/toolchain");next}1' $@/Dockerfile.in > $@/Dockerfile

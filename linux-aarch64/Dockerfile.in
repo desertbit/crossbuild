@@ -1,0 +1,12 @@
+FROM desertbit/crossbuild:base
+MAINTAINER team@desertbit.com
+
+ENV CROSS_TRIPLE=aarch64-rpi3-linux-gnu \
+    CMAKE_SYSTEM_NAME=Linux \
+    CMAKE_SYSTEM_PROCESSOR=arm \
+    GOOS=linux \
+    GOARCH=arm64
+
+#import common.toolchain
+
+RUN build-toolchain
