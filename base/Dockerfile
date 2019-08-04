@@ -33,8 +33,8 @@ RUN chmod +x /scripts/cmake && \
     chmod +x /scripts/build-toolchain
 
 # Install the Go compiler.
-RUN export GO_VERSION="1.12.6" && \
-    export GO_CHECKSUM="dbcf71a3c1ea53b8d54ef1b48c85a39a6c9a935d01fc8291ff2b92028e59913c" && \
+RUN export GO_VERSION="1.12.7" && \
+    export GO_CHECKSUM="66d83bfb5a9ede000e33c6579a91a29e6b101829ad41fffb5c5bb6c900e109d9" && \
     mkdir -p /tmp/go && \
     cd /tmp/go && \
     wget -O go.tar.gz https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
